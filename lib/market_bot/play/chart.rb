@@ -84,7 +84,11 @@ module MarketBot
         @result = []
 
         store_urls.each do |url|
-          req = Typhoeus::Request.new(url, @request_opts)
+          req = Typhoeus::Request.new(url, @request_opts
+
+          puts url
+
+          sleep(1)
           req.run
 
           break unless response_handler(req.response)
