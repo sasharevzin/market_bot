@@ -159,7 +159,7 @@ module MarketBot
 
       def update
         req = Typhoeus::Request.new(store_url, @request_opts)
-        sleep(1)
+        puts store_url
         req.run
         response_handler(req.response)
 

@@ -57,12 +57,13 @@ module MarketBot
         @lang = opts[:lang] || MarketBot::Play::DEFAULT_LANG
         @country = opts[:country] || MarketBot::Play::DEFAULT_COUNTRY
         @max_pages = opts[:max_pages] || MarketBot::Play::Chart::MAX_PAGES
+        @max_entries = opts[:max_entries] || 100
       end
 
       def store_urls
         urls = []
         start = 0
-        num = 100
+        num = @max_entries
 
         @max_pages.times do |_i|
           url = 'https://play.google.com/store/apps'
