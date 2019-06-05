@@ -84,7 +84,7 @@ module MarketBot
         @result = []
 
         store_urls.each do |url|
-          req = Typhoeus::Request.new(url, @request_opts
+          req = Typhoeus::Request.new(url, @request_opts)
 
           puts url
 
