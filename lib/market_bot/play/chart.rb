@@ -39,7 +39,11 @@ module MarketBot
           end
 
           result[:developer] = details_node.css('.subtitle').first.attributes['title'].to_s
-          result[:developer_id] = details_node.css('.subtitle').first.attributes['href'].to_s.gsub('/store/apps/dev?id=', '').gsub('/store/apps/developer?id=', '')
+          developer_id = details_node.css('.subtitle').first.attributes['href'].to_s
+
+          if developer_id.include?('/store/apps/dev?id=')
+            result[:developer_id] = developer_id.gsub('/store/apps/dev?id=', '')
+          end
 
           result[:package] = details_node.css('.title').first.attributes['href'].to_s.gsub('/store/apps/details?id=', '').gsub(/&feature=.*$/, '')
           result[:store_url] = "https://play.google.com/store/apps/details?id=#{result[:package]}&hl=#{opts[:lang]}"
